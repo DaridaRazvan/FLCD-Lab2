@@ -1,0 +1,17 @@
+int a;
+int b;
+int c;
+int largest;
+read(a);
+read(b);
+read(c);
+if a >= b and a >= c {
+largest = a;
+}
+if b >= a and b >= c {
+largest = b;
+}
+if c >= a and c >= b{
+largest = c;
+}
+write(largest)

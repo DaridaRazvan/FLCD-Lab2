@@ -1,0 +1,1 @@
+Symbol Table(Binary search Tree) = { 0 1 i min number }

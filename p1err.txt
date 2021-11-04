@@ -1,0 +1,13 @@
+int 1n;
+int min;
+min = 0ab;
+read(1n);
+int i;
+int number;
+for i = 0; i <= 1n; i = i + 1 {
+read(number);
+if number < min {
+min = number;
+}
+}
+write(min)

@@ -1,0 +1,13 @@
+int n;
+int m;
+read(n);
+read(m);
+while n != m {
+if n > m {
+n = n - m;
+}
+else {
+m = m - n;
+}
+}
+write(n);
