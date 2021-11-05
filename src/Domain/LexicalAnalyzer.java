@@ -47,15 +47,31 @@ public class LexicalAnalyzer {
                     if(programInternalForm.isReservedWord(token) ||
                             programInternalForm.isSeparator(token) ||
                             programInternalForm.isOperator(token)){
-                        programInternalForm.add(programInternalForm.getCode(token), "-1");
+                        programInternalForm.add(programInternalForm.getCode(token), -1);
                     }
                     else if(programInternalForm.isIdentifier(token)){
                         symbolTable.insert(token);
-                        programInternalForm.add(0,token);
+                        List<String> symbolTableList = symbolTable.inorder();
+                        int i = 0;
+                        for(String element : symbolTableList){
+                            if(element.equals(token)){
+                                break;
+                            }
+                            i++;
+                        }
+                        programInternalForm.add(0,i);
                     }
                     else if(programInternalForm.isConstant(token)){
                         symbolTable.insert(token);
-                        programInternalForm.add(1,token);
+                        List<String> symbolTableList = symbolTable.inorder();
+                        int i = 0;
+                        for(String element : symbolTableList){
+                            if(element.equals(token)){
+                                break;
+                            }
+                            i++;
+                        }
+                        programInternalForm.add(1,i);
                     }
                     else{
                         invalidTokens.add(token);

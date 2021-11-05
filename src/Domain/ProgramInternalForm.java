@@ -3,7 +3,7 @@ package Domain;
 import java.util.*;
 
 public class ProgramInternalForm {
-    List<Pair<Integer,String>> pif = new ArrayList<>();
+    List<Pair<Integer,Integer>> pif = new ArrayList<>();
     private final HashMap<String, Integer> codification = new HashMap<>();
 
     private List<String> reservedWords =
@@ -64,7 +64,7 @@ public class ProgramInternalForm {
                 token.matches(stringPattern);
     }
 
-    public void add(Integer position,String name){
+    public void add(Integer position,Integer name){
         pif.add(new Pair<>(position,name));
     }
 
@@ -75,7 +75,7 @@ public class ProgramInternalForm {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        for(Pair<Integer,String> pair : pif){
+        for(Pair<Integer,Integer> pair : pif){
             stringBuilder.append(pair.getKey() + " -> " + pair.getValue() + "\n");
         }
         return stringBuilder.toString();
