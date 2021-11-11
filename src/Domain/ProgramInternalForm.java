@@ -11,6 +11,8 @@ public class ProgramInternalForm {
     private List<String> separators = Arrays.asList("(", ")", ";", "{", "}","[", "]", " ", ":");
     private List<String> operators = Arrays.asList("+","-","*","/","<",">","<=","=",">=","!=","==");
 
+    private final FiniteAutomata intDFA = new FiniteAutomata("src/res/integer.in");
+    private final FiniteAutomata identifierDFA = new FiniteAutomata("src/res/identifier.in");
 
     public ProgramInternalForm() {
         createCodification();
@@ -51,17 +53,17 @@ public class ProgramInternalForm {
     }
 
     public boolean isIdentifier(String token){
-        String pattern = "^[a-zA-Z]([a-z|A-Z])*([0-9])*$";
-        return token.matches(pattern);
+        //String pattern = "^[a-zA-Z]([a-z|A-Z])*([0-9])*$";
+        //return token.matches(pattern);
+        return identifierDFA.checkSequence(token);
     }
 
     public boolean isConstant(String token){
-        String numericPattern = "^([+-]?[1-9]\\d*|0)$";
+        //String numericPattern = "^([+-]?[1-9]\\d*|0)$";
         String charPattern = "^\'[a-zA-Z0-9_?!#*./%+=<>;)(}{ ]\'";
         String stringPattern = "^\"[a-zA-Z0-9_?!#*./%+=<>;)(}{ ]+\"";
-        return token.matches(numericPattern) ||
-                token.matches(charPattern) ||
-                token.matches(stringPattern);
+        return intDFA.checkSequence(token) || token.matches(charPattern) || token.matches(stringPattern);
+        //return token.matches(numericPattern) || token.matches(charPattern) || token.matches(stringPattern);
     }
 
     public void add(Integer position,Integer name){
